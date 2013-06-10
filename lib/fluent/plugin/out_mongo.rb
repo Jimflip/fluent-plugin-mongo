@@ -36,6 +36,7 @@ class MongoOutput < BufferedOutput
     @clients = {}
     @connection_options = {}
     @collection_options = {:capped => false}
+p "mongo woooo hoo"
   end
 
   def configure(conf)
