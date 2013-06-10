@@ -36,7 +36,7 @@ class MongoOutput < BufferedOutput
     @clients = {}
     @connection_options = {}
     @collection_options = {:capped => false}
-p "mongo woooo hoo"
+
   end
 
   def configure(conf)
@@ -67,6 +67,7 @@ p "mongo woooo hoo"
 
     # MongoDB uses BSON's Date for time.
     def @timef.format_nocache(time)
+p time
       time
     end
 
@@ -149,7 +150,7 @@ p "mongo woooo hoo"
   def collect_records(chunk)
     records = []
     chunk.msgpack_each { |time, record|
-      record[@time_key] = Time.at(time || record[@time_key]) if @include_time_key
+      record[@time_key] = (time || record[@time_key]) if @include_time_key
       records << record
     }
     records
