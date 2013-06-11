@@ -41,6 +41,7 @@ class MongoOutput < BufferedOutput
 
   def configure(conf)
     super
+$log.warn " AWESOME!"
 
     if conf.has_key?('tag_mapped')
       @tag_mapped = true
